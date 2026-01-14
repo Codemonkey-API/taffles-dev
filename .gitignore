@@ -1,0 +1,15 @@
+*.mp4
+*.mov
+src/projects/ARETE/*.jpg
+src/projects/ARETE/*.png
+*.mp4
+*.mov
+src/projects/ARETE/*.jpg
+src/projects/ARETE/*.png
+*.mp4
+*.mov
+src/projects/ARETE/*.jpg
+src/projects/ARETE/*.png
+node_modules/
+.vercel
+dist/
