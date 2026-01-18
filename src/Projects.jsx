@@ -176,15 +176,15 @@ export default function Projects() {
       }
     },
     {
-      title: "Cloud-Native Pipeline API",
-      description: "Scalable backend architecture designed for automated CI/CD and container security.",
-      tech: ["Docker", "Go", "Terraform", "PostgreSQL"],
-      type: "DevOps / System",
-      isComingSoon: true,
-      caseStudy: {
-        problem: "Managing manual deployments for microservices lead to configuration drift and downtime.",
-        solution: "Currently architecting an Infrastructure-as-Code (IaC) approach using Terraform providers.",
-        devops: "FUTURE STATE: Automated blue-green deployment strategies via Kubernetes Orchestration."
+      title: "Edge-Optimized Serverless API",
+  description: "High-performance microservice built with Hono.js and TypeScript, designed for AWS Lambda deployment.",
+  tech: ["TypeScript", "Hono.js", "AWS", "Node.js"],
+  type: "Backend / DevOps",
+  isComingSoon: true,
+  caseStudy: {
+    problem: "Reducing cold-start latency in serverless environments for remote users in Sub-Saharan Africa.",
+    solution: "Leveraging lightweight TypeScript frameworks (Hono) for sub-millisecond routing execution.",
+    devops: "IMPLEMENTATION: Scripting AWS CDK for automated Infrastructure as Code (IaC) rollouts."
       }
     },
   ];
