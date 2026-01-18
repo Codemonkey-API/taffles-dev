@@ -21,3 +21,13 @@
 .animate-fade-in-delay-3 {
   animation: fade-in 2s ease-out forwards;
 }
+
+
+
+@keyframes pulse-blue {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.animate-pulse-slow {
+  animation: pulse-blue 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
