@@ -7,7 +7,7 @@ import { ExternalLink, Terminal, Lightbulb, ShieldAlert, PlayCircle, X, Cpu } fr
 import imgAbout from "./images/about.png";
 import imgContact from "./images/contact.png";
 import imgHero from "./images/hero.png";
-import imgProjects from "./images/projects.png";
+import imgProjects from "./images/task.png";
 
 function ProjectCard({ title, description, tech = [], video = null, images = [], type = "Personal", caseStudy, isComingSoon = false }) {
   const [openModal, setOpenModal] = useState(false);
@@ -176,15 +176,16 @@ export default function Projects() {
       }
     },
     {
-      title: "Edge-Optimized Serverless API",
-  description: "High-performance microservice built with Hono.js and TypeScript, designed for AWS Lambda deployment.",
-  tech: ["TypeScript", "Hono.js", "AWS", "Node.js"],
-  type: "Backend / DevOps",
-  isComingSoon: true,
-  caseStudy: {
-    problem: "Reducing cold-start latency in serverless environments for remote users in Sub-Saharan Africa.",
-    solution: "Leveraging lightweight TypeScript frameworks (Hono) for sub-millisecond routing execution.",
-    devops: "IMPLEMENTATION: Scripting AWS CDK for automated Infrastructure as Code (IaC) rollouts."
+      title: "Task Orchestrator API",
+      description: "A production-ready serverless backend using Hono.js and Neon Postgres for high-speed task management.",
+      tech: ["Hono.js", "Serverless", "Neon Cloud", "Drizzle ORM", "TypeScript"],
+      type: "Backend / DevOps",
+      isComingSoon: false, // Updated to false as we have verified the build
+      images: [imgProjects], // Using your project placeholder
+      caseStudy: {
+        problem: "Need for a cost-effective, auto-scaling backend that persists data securely in the cloud without server overhead.",
+        solution: "Integrated Hono.js with Drizzle ORM to perform type-safe CRUD operations on a serverless Neon PostgreSQL instance.",
+        devops: "VERIFIED: Successfully executed cloud database writes with <300ms latency via Serverless Framework offline proxy."
       }
     },
   ];

@@ -1,7 +1,7 @@
- import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Code2, Terminal, Cpu, Rocket } from "lucide-react"; // Icons for that dev feel
+import { Code2, Terminal, Cpu, Rocket } from "lucide-react"; 
 
 const About = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -9,7 +9,6 @@ const About = () => {
   const [maxHeight, setMaxHeight] = useState("10rem");
 
   useEffect(() => {
-    // We already initialized AOS in App.jsx, but keeping it here as a fallback is fine
     AOS.init({ duration: 800, once: true });
   }, []);
 
@@ -21,24 +20,25 @@ const About = () => {
 
   const toggleExpanded = () => setIsExpanded(!isExpanded);
 
-  // Professionalized the bio to focus on results and DevOps growth
   const fullText = (
     <div className="space-y-4 text-gray-300">
       <p>
-        I’m <span className="text-lime-400 font-bold">Tafadzwa "Jaden" Dembo</span>, an engineer who thrives where 
-        hardware limits meet software possibilities.
+        I’m <span className="text-lime-400 font-bold">Tafadzwa "Jaden" Dembo</span>, a Full-Stack Engineer specializing in 
+        <span className="text-white"> cloud-native architectures</span> and high-performance mobile applications.
       </p>
       <p>
-        My journey is built on discipline. While self-teaching the MERN stack and React Native, I’ve learned that 
-        true development isn't just about writing code—it's about managing the entire pipeline.
+        My focus is on building **resilient infrastructure**. Whether it's optimizing 
+        <span className="text-blue-400"> AWS Lambda</span> execution or engineering type-safe database schemas with 
+        <span className="text-blue-400"> Drizzle ORM</span>, I build systems that scale.
       </p>
       <p>
-        Recently, I’ve been deep in the trenches with <span className="text-blue-400">Expo and EAS</span>, successfully 
-        bridging native Android modules like <span className="text-white font-mono text-sm">expo-sharing</span> for local 
-        backups.
+        I recently architected a serverless orchestration layer using <span className="text-white font-mono text-sm">Hono.js</span> 
+        linked to <span className="text-white font-mono text-sm">Neon PostgreSQL</span>, achieving sub-300ms latency for 
+        distributed task management.
       </p>
       <p>
-        I don't make excuses for hardware constraints. I optimize. I ship. One bug at a time.
+        I don't just ship features; I own the pipeline—bridging the gap between <span className="text-lime-400 font-mono italic">React Native</span> 
+        frontend logic and complex backend DevOps.
       </p>
     </div>
   );
@@ -76,12 +76,12 @@ const About = () => {
         {/* Skills grid with DevOps focus */}
         <div data-aos="fade-up" data-aos-delay="200" className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {[
+            { name: "Serverless (AWS)", icon: <Rocket size={16}/> },
+            { name: "PostgreSQL (Neon)", icon: <Cpu size={16}/> },
+            { name: "Drizzle ORM", icon: <Terminal size={16}/> },
             { name: "React Native", icon: <Rocket size={16}/> },
-            { name: "DevOps (EAS)", icon: <Cpu size={16}/> },
             { name: "TypeScript", icon: <Code2 size={16}/> },
-            { name: "Node.js", icon: <Terminal size={16}/> },
-            { name: "Tailwind CSS", icon: <Code2 size={16}/> },
-            { name: "Native Modules", icon: <Cpu size={16}/> },
+            { name: "Hono.js / Node", icon: <Terminal size={16}/> },
           ].map((skill, index) => (
             <div
               key={index}
