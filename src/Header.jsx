@@ -15,12 +15,27 @@ export default function Header() {
   }, []);
 
   const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (id === 'home') {
+      // FIX: Force scroll to absolute top of the window
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const el = document.getElementById(id);
+      if (!el) return;
+      
+      // FIX: Added offset for the fixed header to prevent overlap
+      const headerOffset = 80;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
     
     // Refresh AOS so animations trigger again after scroll
-    setTimeout(() => AOS.refresh(), 200);
+    // Increased timeout slightly for better sync with smooth scroll
+    setTimeout(() => AOS.refresh(), 400);
     setOpen(false);
   };
 
@@ -33,7 +48,11 @@ export default function Header() {
           scrolled ? 'bg-black/60 backdrop-blur-md shadow-2xl' : 'bg-gray-900/40 backdrop-blur-sm'
         }`}>
           {/* Logo Section */}
-          <button onClick={() => scrollToSection('home')} className="flex items-center group">
+          <button 
+            onClick={() => scrollToSection('home')} 
+            className="flex items-center group cursor-pointer"
+            aria-label="Scroll to home"
+          >
             <img
               src={logo}
               alt="T Jaden Dembo logo"
@@ -47,14 +66,15 @@ export default function Header() {
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="px-4 py-2 rounded-full text-sm text-gray-300 font-medium capitalize transition-all hover:bg-white/5 hover:text-lime-400 focus:ring-1 focus:ring-lime-400/50"
+                className="px-4 py-2 rounded-full text-sm text-gray-300 font-medium capitalize transition-all hover:bg-white/5 hover:text-lime-400 focus:ring-1 focus:ring-lime-400/50 cursor-pointer"
               >
                 {item}
               </button>
             ))}
-            {/* DevOps Badge for your 24th! */}
+            
+            {/* Updated Version Badge for 2026 */}
             <div className="ml-4 px-3 py-1 bg-lime-400/10 border border-lime-400/20 rounded-full">
-              <span className="text-[10px] font-bold text-lime-400 tracking-tighter uppercase">v24.0.0 Deploy</span>
+              <span className="text-[10px] font-bold text-lime-400 tracking-tighter uppercase">v26.0.0 Deploy</span>
             </div>
           </nav>
 
@@ -63,6 +83,7 @@ export default function Header() {
             <button
               onClick={() => setOpen((s) => !s)}
               className="p-2 rounded-full text-gray-200 hover:bg-white/10 transition-colors"
+              aria-label="Toggle menu"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {open ? (
@@ -82,7 +103,7 @@ export default function Header() {
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="block py-4 px-4 text-gray-200 font-semibold hover:text-lime-400 w-full text-left border-b border-white/5 last:border-0"
+                className="block py-4 px-4 text-gray-200 font-semibold hover:text-lime-400 w-full text-left border-b border-white/5 last:border-0 cursor-pointer"
               >
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </button>
