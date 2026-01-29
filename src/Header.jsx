@@ -1,4 +1,4 @@
- import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import logo from './assets/logo-T-full.svg';
@@ -7,7 +7,6 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // DevOps touch: Add a scroll listener to change header opacity
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
@@ -16,25 +15,17 @@ export default function Header() {
 
   const scrollToSection = (id) => {
     if (id === 'home') {
-      // FIX: Force scroll to absolute top of the window
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       const el = document.getElementById(id);
       if (!el) return;
-      
-      // FIX: Added offset for the fixed header to prevent overlap
       const headerOffset = 80;
       const elementPosition = el.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
-    
-    // Refresh AOS so animations trigger again after scroll
-    // Increased timeout slightly for better sync with smooth scroll
+
     setTimeout(() => AOS.refresh(), 400);
     setOpen(false);
   };
@@ -47,7 +38,7 @@ export default function Header() {
         <div className={`flex items-center justify-between gap-4 px-6 py-3 rounded-full border border-white/10 transition-all duration-300 ${
           scrolled ? 'bg-black/60 backdrop-blur-md shadow-2xl' : 'bg-gray-900/40 backdrop-blur-sm'
         }`}>
-          {/* Logo Section */}
+          {/* Logo */}
           <button 
             onClick={() => scrollToSection('home')} 
             className="flex items-center group cursor-pointer"
@@ -60,7 +51,7 @@ export default function Header() {
             />
           </button>
 
-          {/* Desktop Nav: Professional & Clean */}
+          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-2">
             {['home', 'projects', 'about', 'contact'].map((item) => (
               <button
@@ -71,14 +62,13 @@ export default function Header() {
                 {item}
               </button>
             ))}
-            
-            {/* Updated Version Badge for 2026 */}
+
             <div className="ml-4 px-3 py-1 bg-lime-400/10 border border-lime-400/20 rounded-full">
               <span className="text-[10px] font-bold text-lime-400 tracking-tighter uppercase">v26.0.0 Deploy</span>
             </div>
           </nav>
 
-          {/* Mobile menu toggle */}
+          {/* Mobile toggle */}
           <div className="md:hidden">
             <button
               onClick={() => setOpen((s) => !s)}

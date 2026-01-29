@@ -1,174 +1,186 @@
- import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Code2, Terminal, Cpu, Rocket } from "lucide-react";
+import { Terminal, Cpu, Code2, Rocket, ShieldCheck } from "lucide-react";
 
 const About = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const contentRef = useRef(null);
-  const [maxHeight, setMaxHeight] = useState("10rem");
+  const [maxHeight, setMaxHeight] = useState("9rem");
 
   useEffect(() => {
-    AOS.init({ duration: 900, once: true, easing: "ease-out-cubic" });
+    AOS.init({ duration: 800, once: true, easing: "ease-out-cubic" });
   }, []);
 
   useEffect(() => {
     if (contentRef.current) {
       setMaxHeight(
-        isExpanded
+        expanded
           ? `${contentRef.current.scrollHeight}px`
-          : "10rem"
+          : "9rem"
       );
     }
-  }, [isExpanded]);
-
-  const toggleExpanded = () => setIsExpanded(!isExpanded);
+  }, [expanded]);
 
   return (
     <section
       id="about"
       className="min-h-screen flex items-center justify-center px-6 py-24 bg-slate-950"
     >
-      <div className="relative max-w-4xl mx-auto bg-white/5 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
+      <div className="relative max-w-5xl w-full bg-white/5 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
 
-        {/* Gradient Glow */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-lime-400/10 via-transparent to-blue-500/10 blur-2xl rounded-3xl" />
+        {/* Ambient Glow */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-lime-400/10 via-transparent to-blue-500/10 blur-2xl" />
 
-        {/* System Status Bar */}
+        {/* STATUS BAR */}
         <div className="flex items-center justify-between mb-6 text-xs font-mono text-gray-400">
           <span className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse" />
-            SYSTEM ONLINE
+            PROFILE ONLINE
           </span>
-          <span>Latency: ~280ms</span>
+          <span>Region: Global · Mode: Production</span>
         </div>
 
-        {/* Decorative Background Icon */}
-        <div className="absolute top-0 right-0 p-8 opacity-5">
-          <Terminal size={220} />
+        {/* Background Icon */}
+        <div className="absolute top-0 right-0 p-10 opacity-[0.04]">
+          <Terminal size={240} />
         </div>
 
+        {/* HEADER */}
         <h2
           data-aos="fade-down"
           className="text-4xl md:text-5xl font-extrabold text-white mb-8 tracking-tight"
         >
-          The <span className="text-lime-400">Engineer</span> Behind the Code
+          SYSTEM <span className="text-lime-400">PROFILE</span>
         </h2>
 
-        {/* Expandable Content */}
+        {/* COLLAPSIBLE SECTION */}
         <div
           ref={contentRef}
           data-aos="fade-up"
-          className="text-lg leading-relaxed mb-6 overflow-hidden transition-all duration-700 ease-in-out"
+          className="overflow-hidden transition-all duration-700 ease-in-out"
           style={{ maxHeight }}
         >
-          <div className="space-y-4 text-gray-300">
-            <p>
-              I’m{" "}
-              <span className="text-lime-400 font-extrabold tracking-tight">
-                Tafadzwa "Jaden" Dembo
-              </span>
-              , a Full-Stack Engineer specializing in{" "}
-              <span className="text-white font-semibold">
-                cloud-native architectures
-              </span>{" "}
-              and high-performance mobile applications.
-            </p>
+          <div className="space-y-6 text-gray-300 text-[15px] leading-relaxed">
 
-            <p>
-              My focus is on building{" "}
-              <span className="text-white font-semibold">
-                resilient infrastructure
-              </span>
-              . Whether it’s optimizing{" "}
-              <span className="text-blue-400 font-medium">
-                AWS Lambda
-              </span>{" "}
-              execution or engineering type-safe database schemas with{" "}
-              <span className="text-blue-400 font-medium">
-                Drizzle ORM
-              </span>
-              , I design systems that scale predictably under load.
-            </p>
+            {/* ROLE */}
+            <div>
+              <p className="text-xs font-mono text-lime-400 mb-1">ROLE</p>
+              <p>
+                Cloud-Native Software Engineer | DevOps-Focused Junior Engineer
+                focused on{" "}
+                <span className="text-white font-semibold">
+                  resilient systems, predictable performance, and operational clarity
+                </span>.
+              </p>
+            </div>
 
-            <p>
-              I recently architected a serverless orchestration layer using{" "}
-              <span className="text-white font-mono text-sm">
-                Hono.js
-              </span>{" "}
-              connected to{" "}
-              <span className="text-white font-mono text-sm">
-                Neon PostgreSQL
-              </span>
-              , consistently achieving sub-300ms latency for distributed task
-              management workloads.
-            </p>
+            {/* DESCRIPTION */}
+            <div>
+              <p className="text-xs font-mono text-lime-400 mb-1">DESCRIPTION</p>
+              <p>
+                I design and ship systems where frontend, backend, and infrastructure
+                are treated as{" "}
+                <span className="text-white font-semibold">
+                  one continuous system
+                </span>
+                — not separate concerns.
+              </p>
+            </div>
 
-            <p>
-              I don’t just ship features — I own the pipeline, bridging{" "}
-              <span className="text-lime-400 font-mono italic">
-                React Native
-              </span>{" "}
-              frontend logic with backend architecture, CI/CD automation, and
-              production reliability.
-            </p>
+            {/* VERIFIED WORK */}
+            <div>
+              <p className="text-xs font-mono text-lime-400 mb-2">
+                VERIFIED OUTCOMES
+              </p>
+              <ul className="space-y-2">
+                <li className="flex gap-2">
+                  <ShieldCheck size={16} className="text-lime-400 mt-0.5" />
+                  <span>
+                    Serverless backends with{" "}
+                    <span className="text-white font-mono text-sm">
+                      Hono.js + Neon PostgreSQL
+                    </span>{" "}
+                    achieving sub-300ms latency.
+                  </span>
+                </li>
+                <li className="flex gap-2">
+                  <ShieldCheck size={16} className="text-lime-400 mt-0.5" />
+                  <span>
+                    Offline-first React Native apps using SQLite with deterministic
+                    sync behavior.
+                  </span>
+                </li>
+                <li className="flex gap-2">
+                  <ShieldCheck size={16} className="text-lime-400 mt-0.5" />
+                  <span>
+                    Container-safe systems that survive restarts without data loss.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            {/* PRINCIPLES */}
+            <div>
+              <p className="text-xs font-mono text-lime-400 mb-2">
+                OPERATING PRINCIPLES
+              </p>
+              <p className="italic text-gray-400">
+                If it can’t be observed, restarted, or reasoned about — it’s not done.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Expand Button */}
+        {/* EXPAND BUTTON */}
         <button
-          onClick={toggleExpanded}
-          className="flex items-center gap-2 text-lime-400 font-bold hover:text-lime-300 transition-colors mb-12"
+          onClick={() => setExpanded(!expanded)}
+          className="mt-6 flex items-center gap-2 text-lime-400 font-mono text-xs hover:text-lime-300 transition"
         >
-          <span className="text-sm uppercase tracking-widest">
-            {isExpanded ? "Hide Diagnostics" : "View System Diagnostics"}
-          </span>
-          <div
-            className={`transition-transform duration-300 ${
-              isExpanded ? "rotate-180" : ""
-            }`}
-          >
-            ↓
-          </div>
+          {expanded ? "▲ COLLAPSE PROFILE" : "▼ EXPAND PROFILE"}
         </button>
 
-        {/* Skills Grid */}
-        <div
-          data-aos="fade-up"
-          data-aos-delay="200"
-          className="grid grid-cols-2 md:grid-cols-3 gap-4"
-        >
+        {/* CORE CAPABILITIES (ALWAYS VISIBLE) */}
+        <div className="mt-12">
+          <p className="text-xs font-mono text-lime-400 mb-3">
+            CORE CAPABILITIES
+          </p>
+          <ul className="list-disc list-inside space-y-1 text-gray-300 text-sm">
+            <li>Cloud-native & serverless architectures</li>
+            <li>Offline-first and low-latency system design</li>
+            <li>Type-safe data modeling & deterministic state flows</li>
+            <li>CI/CD ownership & deployment reliability</li>
+            <li>Linux-first & containerized environments</li>
+          </ul>
+        </div>
+
+        {/* STACK GRID */}
+        <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-4">
           {[
-            { name: "Serverless (AWS)", icon: <Rocket size={16} /> },
-            { name: "PostgreSQL (Neon)", icon: <Cpu size={16} /> },
+            { name: "Serverless / AWS", icon: <Rocket size={16} /> },
+            { name: "PostgreSQL / Neon", icon: <Cpu size={16} /> },
             { name: "Drizzle ORM", icon: <Terminal size={16} /> },
-            { name: "React Native", icon: <Rocket size={16} /> },
-            { name: "TypeScript", icon: <Code2 size={16} /> },
-            { name: "Hono.js / Node", icon: <Terminal size={16} /> },
-          ].map((skill, index) => (
+            { name: "React / React Native", icon: <Code2 size={16} /> },
+            { name: "Docker / Linux", icon: <Cpu size={16} /> },
+            { name: "CI/CD Pipelines", icon: <Terminal size={16} /> },
+          ].map((skill, i) => (
             <div
-              key={index}
-              data-aos="zoom-in"
-              data-aos-delay={index * 80}
-              className="p-4 bg-black/40 rounded-2xl border border-white/5
+              key={i}
+              className="p-4 rounded-2xl bg-black/40 border border-white/5
                          flex items-center gap-3
-                         group hover:border-lime-400/50
-                         hover:bg-black/60
-                         transition-all cursor-default"
+                         hover:border-lime-400/50 transition"
             >
-              <span className="text-lime-500 group-hover:scale-110 transition-transform">
-                {skill.icon}
-              </span>
-              <p className="font-semibold text-gray-300 text-sm">
+              <span className="text-lime-400">{skill.icon}</span>
+              <span className="text-sm text-gray-300 font-semibold">
                 {skill.name}
-              </p>
+              </span>
             </div>
           ))}
         </div>
 
-        {/* Philosophy Footer */}
-        <div className="mt-12 pt-6 border-t border-white/10 text-sm text-gray-400 italic">
-          “I don’t scale servers — I scale systems, habits, and feedback loops.”
+        {/* FOOTER */}
+        <div className="mt-12 pt-6 border-t border-white/10 text-xs font-mono text-gray-400">
+          STATUS: Actively Shipping · Ownership: End-to-End · Reliability: Non-Negotiable
         </div>
       </div>
     </section>

@@ -87,7 +87,7 @@ function ProjectCard({
             muted
             loop
             playsInline
-            className={`w-full h-full object-cover transition-all duration-500 ${
+            className={`w-full h-full object-cover transition-all duration-500 rounded-xl ${
               isHovered ? "opacity-100 scale-105" : "opacity-30"
             }`}
           />
@@ -95,7 +95,7 @@ function ProjectCard({
           <img
             src={images[0] || imgAbout}
             alt={title}
-            className="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition-all duration-700"
+            className="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition-all duration-700 rounded-xl"
           />
         )}
 
@@ -138,9 +138,7 @@ function ProjectCard({
             <p className="text-[11px] uppercase font-bold text-red-400 mb-1">
               Challenge
             </p>
-            <p className="text-gray-300 text-xs">
-              {caseStudy.problem}
-            </p>
+            <p className="text-gray-300 text-xs">{caseStudy.problem}</p>
           </div>
         </div>
 
@@ -150,9 +148,7 @@ function ProjectCard({
             <p className="text-[11px] uppercase font-bold text-lime-400 mb-1">
               Solution
             </p>
-            <p className="text-gray-300 text-xs">
-              {caseStudy.solution}
-            </p>
+            <p className="text-gray-300 text-xs">{caseStudy.solution}</p>
           </div>
         </div>
 
@@ -195,23 +191,26 @@ function ProjectCard({
       {openModal && (
         <div
           onClick={() => setOpenModal(false)}
-          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-6"
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-6 rounded-3xl cursor-pointer"
         >
           <button className="absolute top-8 right-8 text-white/50 hover:text-white">
             <X size={40} />
           </button>
-          <div onClick={(e) => e.stopPropagation()} className="max-w-5xl w-full">
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-4xl w-full max-h-[75vh] flex items-center justify-center"
+          >
             {video ? (
               <video
                 src={video}
                 controls
                 autoPlay
-                className="w-full rounded-2xl border border-white/10"
+                className="w-full max-h-[70vh] object-contain rounded-2xl border border-white/10"
               />
             ) : (
               <img
                 src={images[0]}
-                className="w-full rounded-2xl"
+                className="w-full max-h-[70vh] object-contain rounded-2xl"
                 alt="Preview"
               />
             )}
@@ -271,7 +270,8 @@ export default function Projects() {
       tech: ["Hono.js", "Serverless", "Neon", "Drizzle", "TypeScript"],
       metrics: ["<300ms latency", "Serverless scale", "Type-safe ORM"],
       type: "Production Backend",
-      images: [imgProjects],
+       video:
+        "https://irmewedsmzdzjqhl.public.blob.vercel-storage.com/task-orch.mp4",
       caseStudy: {
         problem:
           "Need for cost-efficient, auto-scaling backend without server overhead.",
@@ -279,6 +279,37 @@ export default function Projects() {
           "Integrated Hono.js with Drizzle ORM on serverless Neon Postgres.",
         devops:
           "VERIFIED: Executed cloud DB writes with <300ms latency via serverless proxy.",
+      },
+    },
+    {
+      title: "Live-Ops Command Center",
+      description:
+        "Production-grade infrastructure monitoring and telemetry dashboard with container resilience and real-time health awareness.",
+      tech: [
+        "React",
+        "Node.js",
+        "Docker",
+        "Docker Compose",
+        "Nginx",
+        "Linux",
+        "Telemetry",
+      ],
+      metrics: [
+        "Restart-safe",
+        "Containerized",
+        "Latency tracking",
+        "Health probes",
+      ],
+      type: "Infrastructure",
+       video:
+        "https://irmewedsmzdzjqhl.public.blob.vercel-storage.com/live-ops.mp4",
+      caseStudy: {
+        problem:
+          "Lack of real-time visibility into service health and container-level failures.",
+        solution:
+          "Built a full-stack live-ops dashboard with stateless APIs, polling-based telemetry, and persistent Docker volumes.",
+        devops:
+          "VERIFIED: Services survive restarts while preserving telemetry using Docker volumes and stateless design.",
       },
     },
   ];
