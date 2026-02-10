@@ -80,7 +80,7 @@ export default function Hero() {
           </a>
 
           <a
-            href="/T-Jaden-Dembo-CV.pdf"
+            href="/Tafadzwa-Jaden-CV.pdf"
             download
             className="group relative w-full sm:w-auto px-8 py-3 bg-white/5 backdrop-blur-md border border-white/10 text-white font-bold rounded-2xl hover:bg-white/10 hover:border-blue-500/50 transition-all flex items-center justify-center gap-3 overflow-hidden"
           >
